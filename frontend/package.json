@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production --stats-json && npm run sbom",
-    "sbom": "cyclonedx-esbuild --output-reproducible --output-file dist/bom/bom.json dist/frontend/stats.json",
+    "build": "ng build --configuration production && npm run sbom",
+    "sbom": "cyclonedx-npm --omit=dev --output-format=JSON --output-file=dist/bom/bom.json",
     "bundle-visualizer": "node --experimental-strip-types filter-bundle-stats-for-diagram.mts && npx esbuild-visualizer --metadata dist/frontend/stats-filtered.json --filename dist/frontend/bundle-report.html",
     "bundle-visualizer:full": "npx esbuild-visualizer --metadata dist/frontend/stats.json --filename dist/frontend/bundle-report.html",
     "test": "ng test",
@@ -34,7 +34,6 @@
     "@codemirror/lang-json": "^6.0.2",
     "@codemirror/lang-yaml": "^6.1.2",
     "@codemirror/merge": "^6.12.0",
-    "@cyclonedx/cyclonedx-esbuild": "^1.0.0",
     "@fortawesome/fontawesome-svg-core": "~1.2.30",
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
